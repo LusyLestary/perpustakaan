@@ -1,0 +1,321 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+::-webkit-scrollbar {
+  color: #c77dff;
+}
+
+::after,
+::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.main {
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  transition: all 0.35s ease-in-out;
+  background-color: #fafbfe;
+}
+/* Sidebar styles */
+#sidebar {
+  width: 70px;
+  min-width: 70px;
+  z-index: 1000;
+  transition: all 0.25s ease-in-out;
+  background-color: #3c096c;
+  display: flex;
+  flex-direction: column;
+}
+
+#sidebar.expand {
+  width: 260px;
+  min-width: 260px;
+}
+
+.toggle-btn {
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
+  padding: 1rem 1.5rem;
+}
+
+.toggle-btn i {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+/* Styling untuk sidebar-logo */
+.sidebar-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.sidebar-logo a {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+#sidebar:not(.expand) .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-link span {
+  display: none;
+}
+
+.sidebar-nav {
+  padding: 2rem 0;
+  flex: 1 1 auto;
+}
+
+a.sidebar-link {
+  padding: 0.625rem 1.625rem;
+  color: #fff;
+  display: block;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-link i {
+  font-size: 1.1rem;
+  margin-right: 0.75rem;
+}
+
+a.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.075);
+  border-left: 3px solid #c77dff;
+}
+
+/* Active item styles */
+.sidebar-item.active a.sidebar-link {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Slightly darker background for active item */
+  border-left: 3px solid #c77dff; /* Highlight active item with a border */
+}
+
+.sidebar-item.active a.sidebar-link i,
+.sidebar-item.active a.sidebar-link span {
+  color: #ffff; /* Change icon and text color when active */
+}
+
+.sidebar-item {
+  position: relative;
+}
+
+#sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
+  position: absolute;
+  top: 0;
+  left: 70px;
+  background-color: #0e2238;
+  padding: 0;
+  min-width: 15rem;
+  display: none;
+}
+
+#sidebar:not(.expand) .sidebar-item:hover .has-dropdown + .sidebar-dropdown {
+  display: block;
+  max-height: 15em;
+  width: 100%;
+  opacity: 1;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+  border: solid;
+  border-width: 0 0.075rem 0.075rem 0;
+  content: "";
+  display: inline-block;
+  padding: 2px;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.4rem;
+  transform: rotate(-135deg);
+  transition: all 0.2s ease-out;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+  transform: rotate(45deg);
+  transition: all 0.2s ease-out;
+}
+
+/* Styling untuk search bar */
+.search-bar input {
+  width: 100%; /* Default ke 100% untuk responsif */
+  max-width: 300px; /* Lebar maksimal di desktop */
+  padding: 0.5rem;
+  border-radius: 20px;
+  border: 1px solid #3c096c;
+}
+
+/* Styling untuk archive logo */
+.archive-logo {
+  display: flex;
+  justify-content: center; /* Menyusun ikon secara horizontal di tengah */
+  align-items: center; /* Menyusun ikon secara vertikal di tengah */
+  height: 40px; /* Tentukan tinggi agar ikon terpusat dengan baik */
+  width: 40px; /* Tentukan lebar agar ikon tidak terlalu besar */
+  background-color: #f0f0f0; /* Ganti dengan warna background jika diinginkan */
+  border-radius: 50%; /* Membuat logo berbentuk lingkaran */
+}
+
+.archive-logo i {
+  font-size: 1.5rem; /* Ukuran ikon */
+  color: #0e2238; /* Warna ikon */
+  cursor: pointer;
+}
+
+/* Styling untuk profile avatar */
+.profile img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* Membuat space antara search dan profile */
+.d-flexx {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Responsif untuk mobile */
+@media (max-width: 768px) {
+  .search-bar input {
+    max-width: 200px; /* Lebar maksimal di mobile */
+  }
+}
+
+/* Menyusun bagian profil dan archive ke kanan */
+.d-flex.justify-content-end {
+  justify-content: flex-end;
+}
+
+/* Menyusun search bar ke kiri */
+.search-bar {
+  width: 50%; /* Atur lebar search bar */
+}
+
+/* Menambahkan margin antara profil dan archive */
+.ms-3 {
+  margin-left: 1rem; /* Margin kiri untuk profil avatar */
+}
+
+.jumbotron-custom {
+  background: linear-gradient(to right, #7b2cbf, #c77dff);
+  background-size: cover; /* Menyesuaikan gambar dengan ukuran kontainer */
+  background-position: center; /* Menempatkan gambar di tengah */
+  color: white;
+  height: 350px; /* Mengatur tinggi jumbotron sesuai dengan tinggi layar */
+}
+
+.item-jualan-container .d-flex {
+  overflow-x: auto; /* Menambahkan scroll horizontal */
+  display: flex; /* Menyusun item dalam satu baris */
+}
+
+.item {
+  flex: 0 0 auto; /* Mengatur item tetap dalam satu baris dan tidak fleksibel */
+  margin-right: 15px; /* Jarak antar item */
+}
+
+.item img {
+  max-width: 250px;
+  height: auto;
+  object-fit: cover; /* Gambar tetap proporsional */
+}
+
+@media (max-width: 768px) {
+  .item img {
+    width: 150px; /* Mengubah ukuran gambar menjadi 75px */
+    height: 150px; /* Mengubah tinggi gambar menjadi 75px */
+  }
+
+  .item h5 {
+    font-size: 1rem; /* Mengubah ukuran font judul item */
+  }
+
+  .item p {
+    font-size: 0.875rem; /* Mengubah ukuran font harga item */
+  }
+}
+
+.book-image {
+  width: 100px; /* Sesuaikan ukuran gambar sesuai kebutuhan */
+  height: auto; /* Membiarkan tinggi gambar otomatis sesuai proporsi */
+}
+
+.d-flexs {
+  display: flex;
+  align-items: center;
+}
+
+.d-flexs img {
+  margin-right: 20px; /* Memberi jarak antara gambar dan konten */
+}
+
+.d-flexs > div {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .d-flexs {
+    flex-direction: column; /* Membuat gambar dan konten menjadi kolom pada perangkat mobile */
+    align-items: flex-start; /* Menyelaraskan konten ke kiri */
+  }
+
+  .book-image {
+    margin-bottom: 10px; /* Memberi jarak di bawah gambar pada tampilan mobile */
+  }
+
+  .d-flexs h5 {
+    font-size: 1rem;
+  }
+}
+
+.btn-primary {
+  background-color: #c77dff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #7b2cbf;
+}
+
+.progress-bar {
+  background-color: #c77dff;
+}
+
+.tinggi {
+  max-width: 100%;
+  height: auto;
+}
